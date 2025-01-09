@@ -16,5 +16,14 @@ class User(db.Model):
             'username' : self.username,
             'email' : self.email,
             'alamat' : self.alamat,
-            
+            'transactions' : [t.to_json() for t in self.transactions]
         }
+    
+    def to_json_without_transaction(self):
+        return {
+            'id' : self.id,
+            'username' : self.username,
+            'email' : self.email,
+            'alamat' : self.alamat,
+        }
+    

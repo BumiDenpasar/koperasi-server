@@ -15,7 +15,7 @@ class Transaction(db.Model):
         jenis_str = convert_jenis_to_str(self.jenis)
         return {
             'id' : self.id,
-            'user' : self.user.to_json(),
+            'user' : self.user.to_json_without_transaction(),
             'tanggal' : self.tanggal,
             'jumlah' : self.jumlah,
             'jenis' : jenis_str,

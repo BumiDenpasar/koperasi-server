@@ -7,8 +7,8 @@ class User(db.Model):
     email = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.Text, nullable=False)
     alamat = db.Column(db.String, nullable=False)
-    transactions = db.relationship("Transaction", back_populates="user")
-
+    transactions = db.relationship("Transaction")
+    saldo = db.relationship("Saldo")
     
     def to_json(self):
         return {
@@ -16,7 +16,7 @@ class User(db.Model):
             'username' : self.username,
             'email' : self.email,
             'alamat' : self.alamat,
-            'transactions' : [t.to_json() for t in self.transactions]
+            #'transactions' : [t.to_json() for t in self.transactions]
         }
     
     def to_json_without_transaction(self):

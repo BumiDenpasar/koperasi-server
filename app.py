@@ -5,6 +5,7 @@ from config import config_by_name
 from extensions import db, jwt
 from users.routes import users
 from transactions.routes import transactions
+from saldo.routes import saldo
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,6 +24,7 @@ def create_app(config_name='dev'):
     # Register blueprints
     app.register_blueprint(users)
     app.register_blueprint(transactions)
+    app.register_blueprint(saldo)
 
     
     return app
